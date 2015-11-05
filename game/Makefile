@@ -238,4 +238,5 @@ clean-release:
 	$(MAKE) clean2 BUILDDIR=$(BUILD_RELEASE_DIR) CFLAGS="$(DEBUG_CFLAGS)"
 
 clean2:
-	-rm -f $(GAME_OBJS)
+	-rm -f $(GAME_OBJS) $(BUILDDIR)/game$(ARCH).$(SHLIBEXT)
+	-rmdir $(BUILDDIR)
