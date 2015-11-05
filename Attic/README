@@ -1,0 +1,9 @@
+This directory contains files and other directories
+that we either didn't want to keep in the source tree
+but couldn't just throw away, or some old code that
+was replaced by newer and better one.
+
+The directory structure here reproduces that of the
+source tree directory. For example, if we had a top
+level `win32' directory, we'll have the Attic/win32
+directory with exactly the same contents.
