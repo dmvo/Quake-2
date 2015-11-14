@@ -1,4 +1,4 @@
-CFLAGS = -m32
+CFLAGS = -m32 -g
 
 OBJECTS = cmd.o \
 	cmodel.o \
@@ -15,4 +15,4 @@ OBJECTS = cmd.o \
 qcommon: $(OBJECTS)
 
 clean:
-	-rm *.a $(OBJECTS) *~ *.o
+	-rm *.a *~ $(OBJECTS)
