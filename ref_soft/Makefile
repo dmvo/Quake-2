@@ -1,4 +1,5 @@
-CFLAGS = -m32 -fPIC
+CFLAGS = -m32 -KPIC
+SHLDFLAGS = -shared
 
 OBJECTS = r_aclip.o \
 	  r_alias.o \
@@ -18,7 +19,8 @@ OBJECTS = r_aclip.o \
 	  r_sprite.o \
 	  r_surf.o \
 
-all: $(OBJECTS)
+ref_soft.so: $(OBJECTS)
+	$(CC) $(SHLDFLAGS) $(OBJECTS) -o $@
 
 clean:
 	-rm *.o *~
