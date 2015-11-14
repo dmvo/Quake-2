@@ -1,4 +1,4 @@
-CFLAGS = -m32 -KPIC
+CFLAGS = -g -m32 -KPIC
 SHLDFLAGS = -shared
 
 OBJECTS = r_aclip.o \
@@ -23,4 +23,4 @@ ref_soft.so: $(OBJECTS)
 	$(CC) $(SHLDFLAGS) $(OBJECTS) -o $@
 
 clean:
-	-rm *.o *~
+	-rm *.o *~ ref_soft.so
