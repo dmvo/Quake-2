@@ -2,6 +2,7 @@
 
 #include "../qcommon/qcommon.h"
 #include "errno.h"
+#include <dlfcn.h>
 
 int	curtime;
 
@@ -31,8 +32,14 @@ void Sys_Quit (void)
 	exit (0);
 }
 
+static void *game_library;
+
 void	Sys_UnloadGame (void)
 {
+	if (game_library)
+		dlclose(game_library);
+
+	game_library = NULL;
 }
 
 void	*Sys_GetGameAPI (void *parms)
