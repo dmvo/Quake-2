@@ -22,6 +22,8 @@ void		SWimp_Shutdown( void )
 
 rserr_t		SWimp_SetMode( int *pwidth, int *pheight, int mode, qboolean fullscreen )
 {
+	rserr_t retval = rserr_ok;
+	return retval;
 }
 
 void		SWimp_AppActivate( qboolean active )
