@@ -1,4 +1,4 @@
-CFLAGS = -m32
+CFLAGS = -m32 -g
 
 OBJECTS = sv_ccmds.o \
 	sv_ents.o \
