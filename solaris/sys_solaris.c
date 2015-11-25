@@ -101,23 +101,49 @@ char *Sys_GetClipboardData( void )
 	return NULL;
 }
 
-void	*Hunk_Begin (int maxsize)
+static byte *membase;
+static int maxhunksize, curhunksize;
+
+void *Hunk_Begin (int maxsize)
 {
-	return NULL;
+	membase = malloc(maxsize);
+
+	if (!membase)
+		Sys_Error(ERR_FATAL, "unable to allocate %d bytes", maxsize);
+
+	maxhunksize = maxsize;
+	curhunksize = 0;
+
+	return membase;
 }
 
-void	*Hunk_Alloc (int size)
+void *Hunk_Alloc (int size)
 {
-	return NULL;
+	byte *buf;
+
+	if (curhunksize + size > maxhunksize)
+		Sys_Error(ERR_FATAL, "Hunk_Alloc overflow");
+
+	buf = membase + curhunksize;
+	curhunksize += size;
+
+	return buf;
 }
 
-void	Hunk_Free (void *buf)
+void Hunk_Free (void *buf)
 {
+	if (buf)
+		free(buf);
 }
 
-int		Hunk_End (void)
+int Hunk_End (void)
 {
-	return 0;
+	byte *n = realloc(membase, curhunksize);
+
+	if (n != membase)
+		Sys_Error(ERR_FATAL, "Couldn't remap block (%d)", errno);
+
+	return curhunksize;
 }
 
 int		Sys_Milliseconds (void)
