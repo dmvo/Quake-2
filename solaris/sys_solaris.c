@@ -3,6 +3,7 @@
 #include "../qcommon/qcommon.h"
 #include "errno.h"
 #include <dlfcn.h>
+#include <limits.h>
 
 int	curtime;
 
@@ -44,7 +45,34 @@ void	Sys_UnloadGame (void)
 
 void	*Sys_GetGameAPI (void *parms)
 {
-	return NULL;
+	char *path = NULL;
+	char curpath[PATH_MAX];
+	char name[PATH_MAX];
+	const char gamename[] = "game.so";
+	void *(*GetGameAPI)(void *);
+
+	getcwd(curpath, sizeof(curpath));
+
+	while (1) {
+		path = FS_NextPath(path);
+		if (!path)
+			return NULL;
+
+		sprintf(name, "%s/%s/%s", curpath, path, gamename);
+
+		game_library = dlopen(name, RTLD_NOW);
+		if (game_library)
+			break;
+	}
+
+	GetGameAPI = (void *)dlsym(game_library, "GetGameAPI");
+
+	if (!GetGameAPI) {
+		Sys_UnloadGame();
+		return NULL;
+	}
+
+	return GetGameAPI(parms);
 }
 
 char *Sys_ConsoleInput (void)
