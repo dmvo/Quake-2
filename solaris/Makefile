@@ -7,7 +7,6 @@ OBJECTS = \
 	cd_solaris.o \
 	in_solaris.o \
 	snddma_solaris.o \
-	swimp_solaris.o \
 	sys_solaris.o \
 	vid_solaris.o \
 
