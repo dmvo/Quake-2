@@ -1,4 +1,4 @@
-CFLAGS = -m32 -g
+CFLAGS = -m32 -g -Wall
 
 OBJECTS = sv_ccmds.o \
 	sv_ents.o \
