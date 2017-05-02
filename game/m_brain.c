@@ -496,18 +496,19 @@ void brain_melee(edict_t *self)
 
 mframe_t brain_frames_run [] =
 {
-	ai_run,	9,	NULL,
-	ai_run,	2,	NULL,
-	ai_run,	3,	NULL,
-	ai_run,	3,	NULL,
-	ai_run,	1,	NULL,
-	ai_run,	0,	NULL,
-	ai_run,	0,	NULL,
-	ai_run,	10,	NULL,
-	ai_run,	-4,	NULL,
-	ai_run,	-1,	NULL,
-	ai_run,	2,	NULL
+	{ ai_run,	9,	NULL},
+	{ ai_run,	2,	NULL},
+	{ ai_run,	3,	NULL},
+	{ ai_run,	3,	NULL},
+	{ ai_run,	1,	NULL},
+	{ ai_run,	0,	NULL},
+	{ ai_run,	0,	NULL},
+	{ ai_run,	10,	NULL},
+	{ ai_run,	-4,	NULL},
+	{ ai_run,	-1,	NULL},
+	{ ai_run,	2,	NULL}
 };
+
 mmove_t brain_move_run = {FRAME_walk101, FRAME_walk111, brain_frames_run, NULL};
 
 void brain_run (edict_t *self)
