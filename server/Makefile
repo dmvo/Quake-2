@@ -1,4 +1,4 @@
-CFLAGS = -m32 -g -Wall
+CFLAGS = -m32 -g -Wall -Werror
 
 OBJECTS = sv_ccmds.o \
 	sv_ents.o \
