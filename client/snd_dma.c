@@ -1011,12 +1011,11 @@ void S_Update(vec3_t origin, vec3_t forward, vec3_t right, vec3_t up)
 	int			i;
 	int			total;
 	channel_t	*ch;
-	channel_t	*combine;
 
 	if (!sound_started)
 		return;
 
-	// if the laoding plaque is up, clear everything
+	// if the loading plaque is up, clear everything
 	// out to make sure we aren't looping a dirty
 	// dma buffer while loading
 	if (cls.disable_screen)
@@ -1033,8 +1032,6 @@ void S_Update(vec3_t origin, vec3_t forward, vec3_t right, vec3_t up)
 	VectorCopy(forward, listener_forward);
 	VectorCopy(right, listener_right);
 	VectorCopy(up, listener_up);
-
-	combine = NULL;
 
 	// update spatialization for dynamic sounds	
 	ch = channels;

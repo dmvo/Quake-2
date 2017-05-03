@@ -1939,14 +1939,6 @@ static void CreditsFunc( void *unused )
 
 void Game_MenuInit( void )
 {
-	static const char *difficulty_names[] =
-	{
-		"easy",
-		"medium",
-		"hard",
-		0
-	};
-
 	s_game_menu.x = viddef.width * 0.50;
 	s_game_menu.nitems = 0;
 
@@ -3604,7 +3596,6 @@ static int pmicmpfnc( const void *_a, const void *_b )
 qboolean PlayerConfig_MenuInit( void )
 {
 	extern cvar_t *name;
-	extern cvar_t *team;
 	extern cvar_t *skin;
 	char currentdirectory[1024];
 	char currentskin[1024];
@@ -3783,7 +3774,6 @@ void PlayerConfig_MenuDraw( void )
 	if ( s_pmi[s_player_model_box.curvalue].skindisplaynames )
 	{
 		static int yaw;
-		int maxframe = 29;
 		entity_t entity;
 
 		memset( &entity, 0, sizeof( entity ) );

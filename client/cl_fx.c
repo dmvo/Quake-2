@@ -1821,7 +1821,7 @@ void CL_FlyParticles (vec3_t origin, int count)
 	int			i;
 	cparticle_t	*p;
 	float		angle;
-	float		sr, sp, sy, cr, cp, cy;
+	float		sp, sy, cp, cy;
 	vec3_t		forward;
 	float		dist = 64;
 	float		ltime;
@@ -1847,8 +1847,6 @@ void CL_FlyParticles (vec3_t origin, int count)
 		sp = sin(angle);
 		cp = cos(angle);
 		angle = ltime * avelocities[i][2];
-		sr = sin(angle);
-		cr = cos(angle);
 	
 		forward[0] = cp*cy;
 		forward[1] = cp*sy;
@@ -1923,7 +1921,7 @@ void CL_BfgParticles (entity_t *ent)
 	int			i;
 	cparticle_t	*p;
 	float		angle;
-	float		sr, sp, sy, cr, cp, cy;
+	float		sp, sy, cp, cy;
 	vec3_t		forward;
 	float		dist = 64;
 	vec3_t		v;
@@ -1946,8 +1944,6 @@ void CL_BfgParticles (entity_t *ent)
 		sp = sin(angle);
 		cp = cos(angle);
 		angle = ltime * avelocities[i][2];
-		sr = sin(angle);
-		cr = cos(angle);
 	
 		forward[0] = cp*cy;
 		forward[1] = cp*sy;
@@ -2069,7 +2065,6 @@ void CL_TrapParticles (entity_t *ent)
 				p->alpha = 1.0;
 				p->alphavel = -1.0 / (0.3 + (rand()&7) * 0.02);
 				
-				p->org[0] = org[0] + i + ((rand()&23) * crand());
 				p->org[1] = org[1] + j + ((rand()&23) * crand());
 				p->org[2] = org[2] + k + ((rand()&23) * crand());
 	
