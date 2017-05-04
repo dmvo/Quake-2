@@ -167,7 +167,6 @@ void R_DrawParticles (void)
 {
 	particle_t *p;
 	int         i;
-	extern unsigned long fpu_sp24_cw, fpu_chop_cw;
 
 	VectorScale( vright, xscaleshrink, r_pright );
 	VectorScale( vup, yscaleshrink, r_pup );
