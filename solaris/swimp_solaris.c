@@ -10,6 +10,7 @@ void		SWimp_EndFrame (void)
 
 int			SWimp_Init( void *hInstance, void *wndProc )
 {
+	return 0;
 }
 
 void		SWimp_SetPalette( const unsigned char *palette)
